@@ -1,0 +1,17 @@
+body {
+  background: white;
+  padding: 20px;
+  font-family: Helvetica;
+}
+
+.serv-info {
+  background: rgb(218, 216, 216);
+  display: inline-block;
+  border: 2px solid #333;
+  padding: 20px;
+  font-size: 25px;
+  text-align: left;
+  transition: all 0.2s;
+  margin: 3px auto;
+  width: 300px;
+}

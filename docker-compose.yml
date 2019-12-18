@@ -1,0 +1,32 @@
+version: '3'
+services:
+  server1:
+    build: ./server1
+    volumes:
+      - ./server1:/usr/src/app
+    ports:
+      - 5001:5000
+  server2:
+    build: ./server2
+    volumes:
+      - ./server2:/usr/src/app
+    ports:
+      - 5002:5000
+  server3:
+    build: ./server3
+    volumes:
+      - ./server3:/usr/src/app
+    ports:
+      - 5003:5000
+  server4:
+    build: ./server4
+    volumes:
+      - ./server4:/usr/src/app
+    ports:
+      - 5004:5000
+  server5:
+    build: ./server5
+    volumes:
+      - ./server5:/usr/src/app
+    ports:
+      - 5005:5000

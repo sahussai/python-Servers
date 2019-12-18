@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <title>API Caller</title>
+</head>
+
+<body>
+  <div class="serv-info" id="server1">
+    <div class="name">Name: <span id="name-text-1"></span></div>
+    <div class="status">Status: <span id="status-text-1"></span></div>
+    <div class="temperature">
+      Temperature: <span id="temperature-text-1"></span>
+    </div>
+    <div class="uploadSpeed">
+      Upload Speed: <span id="uploadSpeed-text-1"></span>
+    </div>
+    <div class="downloadSpeed">
+      Download Speed: <span id="downloadSpeed-text-1"></span>
+    </div>
+  </div>
+  <div class="serv-info" id="server2">
+    <div class="name">Name: <span id="name-text-2"></span></div>
+    <div class="status">Status: <span id="status-text-2"></span></div>
+    <div class="temperature">
+      Temperature: <span id="temperature-text-2"></span>
+    </div>
+    <div class="uploadSpeed">
+      Upload Speed: <span id="uploadSpeed-text-2"></span>
+    </div>
+    <div class="downloadSpeed">
+      Download Speed: <span id="downloadSpeed-text-2"></span>
+    </div>
+  </div>
+  <div class="serv-info" id="server3">
+    <div class="name">Name: <span id="name-text-3"></span></div>
+    <div class="status">Status: <span id="status-text-3"></span></div>
+    <div class="temperature">
+      Temperature: <span id="temperature-text-3"></span>
+    </div>
+    <div class="uploadSpeed">
+      Upload Speed: <span id="uploadSpeed-text-3"></span>
+    </div>
+    <div class="downloadSpeed">
+      Download Speed: <span id="downloadSpeed-text-3"></span>
+    </div>
+  </div>
+  <div class="serv-info" id="server4">
+    <div class="name">Name: <span id="name-text-4"></span></div>
+    <div class="status">Status: <span id="status-text-4"></span></div>
+    <div class="temperature">
+      Temperature: <span id="temperature-text-4"></span>
+    </div>
+    <div class="uploadSpeed">
+      Upload Speed: <span id="uploadSpeed-text-4"></span>
+    </div>
+    <div class="downloadSpeed">
+      Download Speed: <span id="downloadSpeed-text-4"></span>
+    </div>
+  </div>
+  <div class="serv-info" id="server5">
+    <div class="name">Name: <span id="name-text-5"></span></div>
+    <div class="status">Status: <span id="status-text-5"></span></div>
+    <div class="temperature">
+      Temperature: <span id="temperature-text-5"></span>
+    </div>
+    <div class="uploadSpeed">
+      Upload Speed: <span id="uploadSpeed-text-5"></span>
+    </div>
+    <div class="downloadSpeed">
+      Download Speed: <span id="downloadSpeed-text-5"></span>
+    </div>
+  </div>
+</body>
+
+<script>
+  function fetchdata(location, number) {
+    $.ajax({
+      url: location,
+      type: "get",
+      success: function (data) {
+        $("#name-text-" + number).text(data.data.name);
+        $("#status-text-" + number).text(data.data.status);
+        $("#temperature-text-" + number).text(data.data.temperature);
+        $("#uploadSpeed-text-" + number).text(data.data.uploadSpeed);
+        $("#downloadSpeed-text-" + number).text(data.data.downloadSpeed);
+      },
+      complete: function (data) {
+        setTimeout(fetchdata, 5000, location, number);
+      }
+    });
+  }
+
+  $(document).ready(function () {
+    setTimeout(fetchdata, 5000, "http://localhost:5001/", "1");
+    setTimeout(fetchdata, 5000, 'http://localhost:5002/', '2');
+    setTimeout(fetchdata, 5000, 'http://localhost:5003/', '3');
+    setTimeout(fetchdata, 5000, 'http://localhost:5004/', '4');
+    setTimeout(fetchdata, 5000, 'http://localhost:5005/', '5');
+  });
+</script>
+
+</html>
